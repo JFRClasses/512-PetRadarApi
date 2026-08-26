@@ -1,6 +1,8 @@
 import { envs } from "src/config/envs";
+import { PendingEmail } from "src/email/entities/pending-email.entity";
 import { LostPet } from "src/lost-pets/entities/lost-pet.entity";
-import { DataSourceOptions } from "typeorm";
+import { User } from "src/users/entities/user.entity";
+import { DataSource, DataSourceOptions } from "typeorm";
 
 export const dataSourceOptions : DataSourceOptions = {
     host: envs.DB_HOST,
@@ -9,7 +11,14 @@ export const dataSourceOptions : DataSourceOptions = {
     database: envs.DB_NAME,
     username: envs.DB_USER,
     password: envs.DB_PASSWORD,
-    entities: [LostPet],
+    entities: [
+        LostPet,
+        PendingEmail,
+        User
+    ],
     synchronize: false,
-    migrations: ['']
+    migrations: ['dist/db/migrations/[0-9]*-*.js']
 }
+
+const dataSource = new DataSource(dataSourceOptions);
+export default dataSource;

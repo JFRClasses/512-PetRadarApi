@@ -1,6 +1,6 @@
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 import type { Point } from 'typeorm'
-@Entity('lostpet')
+@Entity('LOST_PET')
 export class LostPet{
 
     @PrimaryGeneratedColumn()
@@ -30,4 +30,7 @@ export class LostPet{
 
     @Column()
     color!: string;
+
+    @Column()
+    ownerName?: string;
 }

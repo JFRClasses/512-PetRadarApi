@@ -7,4 +7,5 @@ export class CreateLostPetDto{
     race!: string;
     age!: number;
     color!: string;
+    ownerName!: string;
 }

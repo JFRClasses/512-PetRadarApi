@@ -2,11 +2,15 @@ import { Body, Controller, Post } from '@nestjs/common';
 import { EmailService } from 'src/email/email.service';
 import { CreateLostPetDto } from './dtos/create-lost-pet.dto';
 import { generateLostPetTemplate } from 'src/lost-pets/templates/lost-pet.template';
+import { LostPetsService } from './lost-pets.service';
 
 @Controller('lost-pets')
 export class LostPetsController {
 
-    constructor(private emailService:EmailService){}
+    constructor(
+        private emailService:EmailService,
+        private lostPetService: LostPetsService
+    ){}
 
     @Post()
     async createIncident(
@@ -14,6 +18,7 @@ export class LostPetsController {
     ){
         const template = generateLostPetTemplate(createLostPetDto);
         await this.emailService.sendEmail(template);
-        return true;
+        const lostPet = await this.lostPetService.createLostPet(createLostPetDto);
+        return lostPet;
     }
 }

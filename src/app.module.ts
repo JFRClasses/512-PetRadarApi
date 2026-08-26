@@ -4,11 +4,14 @@ import { AppService } from './app.service';
 import { LostPetsModule } from './lost-pets/lost-pets.module';
 import { EmailModule } from './email/email.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { UsersModule } from './users/users.module';
+import { dataSourceOptions } from './db/data-source';
 @Module({
   imports: [
     LostPetsModule,
     EmailModule,
-    TypeOrmModule.forRoot()
+    TypeOrmModule.forRoot(dataSourceOptions),
+    UsersModule
   ],
   controllers: [AppController],
   providers: [AppService],
