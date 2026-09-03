@@ -6,12 +6,14 @@ import { EmailModule } from './email/email.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './users/users.module';
 import { dataSourceOptions } from './db/data-source';
+import { AuthModule } from './auth/auth.module';
 @Module({
   imports: [
     LostPetsModule,
     EmailModule,
     TypeOrmModule.forRoot(dataSourceOptions),
-    UsersModule
+    UsersModule,
+    AuthModule
   ],
   controllers: [AppController],
   providers: [AppService],
