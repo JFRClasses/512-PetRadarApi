@@ -1,4 +1,24 @@
 services:
+
+  pet-radar-api:
+    image: 512-pet-radar-api:latest
+    container_name: PetRadarApi
+    ports:
+      - 3001:3000
+    environment:
+      - MAILER_SERVICE=${MAILER_SERVICE}
+      - MAILER_USER=${MAILER_USER}
+      - MAILER_PASSWORD=${MAILER_PASSWORD}
+      - MAPBOX_TOKEN=${MAPBOX_TOKEN}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
+      - DB_TYPE=${DB_TYPE}
+      - REDIS_HOST=${REDIS_HOST}
+      - REDIS_PORT=${REDIS_PORT}
+
   postgres:
     image: postgis/postgis:16-master
     container_name: 512-petradar-db

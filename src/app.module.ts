@@ -7,13 +7,15 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './users/users.module';
 import { dataSourceOptions } from './db/data-source';
 import { AuthModule } from './auth/auth.module';
+import { CacheModule } from './cache/cache.module';
 @Module({
   imports: [
     LostPetsModule,
     EmailModule,
     TypeOrmModule.forRoot(dataSourceOptions),
     UsersModule,
-    AuthModule
+    AuthModule,
+    CacheModule
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -11,4 +11,6 @@ export const envs = {
     DB_HOST: env.get('DB_HOST').required().asString(),
     DB_PORT: env.get('DB_PORT').required().asPortNumber(),
     DB_TYPE: env.get('DB_TYPE').required().asString(),
+    REDIS_HOST: env.get('REDIS_HOST').required().asString(),
+    REDIS_PORT: env.get('REDIS_PORT').required().asPortNumber()
 };

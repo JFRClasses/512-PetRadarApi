@@ -2,22 +2,26 @@ import { BadRequestException, Injectable, NotFoundException } from '@nestjs/comm
 import { CreateUserDto } from 'src/users/dtos/create-user.dto';
 import { UsersService } from 'src/users/users.service';
 import { LoginDto } from './dtos/login.dto';
+import { TokenService } from './token/token.service';
 
 @Injectable()
 export class AuthService {
 
     constructor(
-        private usersService:UsersService
+        private usersService:UsersService,
+        private tokenService: TokenService
     ){}
 
     async register(dto:CreateUserDto){
         const id = await this.usersService.create(dto);
-        return id;
+        const token = await this.tokenService.generate(id);
+        return token;
     }
 
     async login(dto:LoginDto){
         const id = await this.usersService.validate(dto.email,dto.password);
         if(!id) throw new BadRequestException("El email o la contraseña no es valido");
-        return id;
+        const token = await this.tokenService.generate(id);
+        return token;
     }
 }
