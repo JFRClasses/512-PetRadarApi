@@ -9,5 +9,8 @@ jobs:
   build-and-push:
     runs-on: ubuntu-latest
     steps:
-      - name: Hola mundo
-        run: echo "Hola a todos"
+      - name: Clonar repositorio
+        uses: actions/checkout@v7
+
+      - name: Construir la imagen Docker
+        run: docker build -t 512-pet-radar-api:latest .
