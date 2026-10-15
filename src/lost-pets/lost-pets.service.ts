@@ -24,7 +24,7 @@ export class LostPetsService {
         return pets
     }
 
-    async createLostPet(dto: CreateLostPetDto){
+    async createLostPet(dto: CreateLostPetDto,url?:string){
         const lostPet = this.lostPetRepository.create({
             age: dto.age,
             name: dto.name,
@@ -33,6 +33,7 @@ export class LostPetsService {
             race: dto.race,
             phone: dto.phone,
             type: dto.type,
+            imageUrl: url,
             location: {
                 type: 'Point',
                 coordinates: [dto.lon,dto.lat]

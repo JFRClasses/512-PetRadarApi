@@ -8,6 +8,7 @@ import { UsersModule } from './users/users.module';
 import { dataSourceOptions } from './db/data-source';
 import { AuthModule } from './auth/auth.module';
 import { CacheModule } from './cache/cache.module';
+import { StorageModule } from './storage/storage.module';
 @Module({
   imports: [
     LostPetsModule,
@@ -15,7 +16,8 @@ import { CacheModule } from './cache/cache.module';
     TypeOrmModule.forRoot(dataSourceOptions),
     UsersModule,
     AuthModule,
-    CacheModule
+    CacheModule,
+    StorageModule
   ],
   controllers: [AppController],
   providers: [AppService],

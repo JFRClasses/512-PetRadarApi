@@ -6,6 +6,7 @@ import { LostPet } from './entities/lost-pet.entity';
 import { LostPetsService } from './lost-pets.service';
 import { AuthModule } from 'src/auth/auth.module';
 import { CacheModule } from 'src/cache/cache.module';
+import { StorageModule } from 'src/storage/storage.module';
 // Indices en SQL!!
 // IX ID Where 10000, 20000, 30000 2s 3s 1s 50ms
 // PRIMERO DEBES DE MEJORAR LAS QUERIES LO MAXIMO POSIBLES
@@ -23,7 +24,8 @@ import { CacheModule } from 'src/cache/cache.module';
     AuthModule,
     CacheModule,
     EmailModule,
-    TypeOrmModule.forFeature([LostPet])
+    TypeOrmModule.forFeature([LostPet]),
+    StorageModule
   ],
   controllers: [LostPetsController],
   providers: [LostPetsService]
